@@ -6,8 +6,31 @@
 	<link rel="stylesheet" type="css/text" href="css/style.css">
 	<link rel="stylesheet" type="css/text" href="css/bbui-min.css">
 	<script src="local:///chrome/webworks.js"></script>
-	<script data-main="js/app" src="js/require.js"></script>
+	<script src="js/require.js"></script>
 	
+	<script>
+		document.addEventListener("webworksready", function(e){
+			requirejs(["js/bbui","js/camera_webkit","js/sensor"],function(){
+				var config = {};
+	           	config.onscreenready = function(element, id) {};
+				config.ondomready = function(element, id, params) {
+					switch(id){
+						case "acelerometro":
+							sensor.initSensor();
+						break;
+						case "camera":
+							cameraWeb.initCamera();
+						break;
+					}
+				};
+				
+				bb.init(config);
+				bb.pushScreen("lista-exemplos.html", "home");
+
+
+			})
+		},false);
+	</script>
 	
 </head>
 <body>
