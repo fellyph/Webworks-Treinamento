@@ -17,6 +17,11 @@ var cameraWeb = {
         console.log("chamou");
         cameraWeb.n.webkitGetUserMedia({video:true,audio:true,toString:function(){return "video,audio";}}, 
             cameraWeb.onSuccess, cameraWeb.onError);
-    }
+    },
+    takePhoto:function(){
 
+    },
+    savePhoto:function(){
+
+    }
 }
